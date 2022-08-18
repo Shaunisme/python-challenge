@@ -47,11 +47,11 @@ with open(csvpath,encoding='utf') as csvfile:
 
 # Print Result
 print('Finacial Analysis')
-print('\n------------------------\n')
-print(f'Total Months: {months}\n')
-print(f'Total: {totalAmount}\n')
+print('------------------------')
+print(f'Total Months: {months}')
+print(f'Total: {totalAmount}')
 
-print(f'Average Change: {round((profit-firstMonthProfit)/(months-1),2)}\n')
+print(f'Average Change: {round((profit-firstMonthProfit)/(months-1),2)}')
 
-print(f'Greatest Increase in Profits: {greatIncreaseMonth} (${greatIncrease})\n')
+print(f'Greatest Increase in Profits: {greatIncreaseMonth} (${greatIncrease})')
 print(f'Greatest Decrease in Profits: {greatDecreaseMonth} (${greatDecrease})')
