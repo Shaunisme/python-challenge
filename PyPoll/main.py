@@ -1,10 +1,12 @@
 # PyPoll
 import os
 import csv
+from collections import Counter
 
-totalVotes=0
-canditate[]
-number[]
+def printline():
+        print('----------------------------------')
+
+canditate=[]
 
 scriptpath=os.path.dirname(os.path.realpath('__file__'))
 csvpath=os.path.join(scriptpath,"Resources","election_data.csv")
@@ -15,11 +17,22 @@ with open(csvpath,encoding='utf') as csvfile:
 
     # Read each row
     for row in csvreader:
-        totalVotes=totalVotes+1
+        canditate.append(row[2])
+    
+    voteCount=Counter(canditate)
+    
+    print('Election Resluts')
+    printline()
 
-print('Election Resluts')
-print('----------------------------------')
-print(f'Total Votes: {totalVotes}')
-print('----------------------------------')
-print('----------------------------------')
-print('----------------------------------')
+    totalVotes=sum(voteCount.values())
+    print(f'Total Votes: {totalVotes}')
+    printline()
+
+    for name in voteCount.keys():
+        voteNumber=voteCount[name]
+        print(f'{name}: {round(voteNumber/totalVotes*100,3)}% ({voteNumber})')
+    printline()
+    maxVotes=max(voteCount.values())
+    winner=[i for i in voteCount.keys() if voteCount[i] == maxVotes]
+    print(f'Winner: {winner[0]}')
+    printline()
