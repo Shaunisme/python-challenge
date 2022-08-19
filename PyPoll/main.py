@@ -39,7 +39,7 @@ with open(csvPath,encoding='utf') as csvFile:
         print(f'{name}: {round(voteNumber/totalVotes*100,3)}% ({voteNumber})')
     printline()
 
-    # choose the max votes and print winner
+    # Choose the max votes and print winner
     maxVotes=max(voteCount.values())
     winner=[i for i in voteCount.keys() if voteCount[i] == maxVotes]
     print(f'Winner: {winner[0]}')

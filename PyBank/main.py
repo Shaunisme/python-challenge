@@ -2,8 +2,7 @@ import os
 import csv
 # PyBank
 
-
-# init months, totalAmount, flag, etc.
+# Init months, totalAmount, flag, etc.
 months=0
 totalAmount=0
 lastProfit=0
@@ -14,15 +13,15 @@ greatDecreaseMonth=""
 firstMonthFlag=True
 
 # Read data from Resources file: ~/Resources/budget.data.csv
-scriptpath=os.path.dirname(os.path.realpath('__file__'))
-csvpath=os.path.join(scriptpath,"Resources","budget_data.csv")
-with open(csvpath,encoding='utf') as csvfile:
-    csvreader=csv.reader(csvfile,delimiter=",")
+scriptPath=os.path.dirname(os.path.realpath('__file__'))
+csvPath=os.path.join(scriptPath,"Resources","budget_data.csv")
+with open(csvPath,encoding='utf') as csvFile:
+    csvReader=csv.reader(csvFile,delimiter=",")
     # Skip the first title line
-    next(csvreader)
+    next(csvReader)
 
-    # Read each row
-    for row in csvreader:
+    # Read each row and sum total profit
+    for row in csvReader:
         months=months+1
         profit=int(row[1])
         totalAmount=totalAmount + profit
@@ -32,6 +31,7 @@ with open(csvpath,encoding='utf') as csvfile:
             firstMonthProfit=profit
             firstMonthFlag=False
         
+        # Calc increase than last month
         increase=profit-lastProfit
         
         # Remember the profit for next month
